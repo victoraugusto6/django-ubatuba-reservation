@@ -131,3 +131,6 @@ dmypy.json
 # Editor
 .idea
 .vscode
+
+# Staticfiles
+staticfiles
