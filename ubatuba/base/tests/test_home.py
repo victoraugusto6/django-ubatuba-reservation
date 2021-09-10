@@ -18,8 +18,12 @@ def test_contains_home_link(resp):
     assert_contains(resp, reverse('base:home'))
 
 
-def test_contains_dropdown(resp):
-    assert_contains(resp, '<li class="nav-item dropdown">')
+def test_contains_dropdown_reservas(resp):
+    assert_contains(resp, 'Ver reservas</a></li>')
+
+
+def test_contains_dropdown_hospedes(resp):
+    assert_contains(resp, 'Ver hóspedes</a></li>')
 
 
 def test_contains_button_reservation(resp):
