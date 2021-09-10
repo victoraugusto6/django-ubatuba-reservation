@@ -11,13 +11,19 @@
 
                 <div class="p-5 mb-4 bg-light rounded-3">
                     <div class="container-fluid py-5">
-                        <h1 class="display-5 fw-bold">Ubatuba - Reservas</h1>
+                        <h1 class="display-5 fw-bold">Ubatuba - Agenda</h1>
                         <p class="col-md-8 fs-4">Use este portal para visualizar as reservas realizadas do apartamento
                             em Ubatuba - SP.</p>
-                        <div>
-                            <button class="btn btn-primary btn-lg" type="button">Fotos</button>
-                            <button class="btn btn-primary btn-lg" type="button">Mapa</button>
+
+                        <div class="m-2">
+                            <a class="btn btn-primary btn-lg" href="{% url 'reserva:reservation' %}" type="button">Ver
+                                reservas</a>
                         </div>
+
+                        <div class="m-2">
+                            <a class="btn btn-primary btn-lg" href="#" type="button">Cadastrar reserva</a>
+                        </div>
+
                     </div>
                 </div>
 

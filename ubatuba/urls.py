@@ -20,6 +20,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('ubatuba.base.urls')),
+    path('reserva/', include('ubatuba.reserva.urls')),
 ]
 
 if settings.DEBUG:
