@@ -13,47 +13,53 @@
                 <p>
                     Aqui você verá a lista de reservas cadastradas.
                 </p>
-                <table class="table border-0">
-                    <thead>
-                    <tr>
-                        <th>Hóspedes</th>
-                        <th>Entrada</th>
-                        <th>Saída</th>
-                        <th>Pago</th>
-                        <th>Qtd. Adultos</th>
-                        <th>Qtd. Crianças</th>
-                        <th>Valor</th>
-                    </tr>
-                    </thead>
-                    <tbody>
 
-                    {% for reserva in reservas %}
+                <div class="responsive-table">
+
+                    <table class="table border-0">
+                        <thead>
+                        <tr>
+                            <th>Hóspedes</th>
+                            <th>Entrada</th>
+                            <th>Saída</th>
+                            <th>Pago</th>
+                            <th>Qtd. Adultos</th>
+                            <th>Qtd. Crianças</th>
+                            <th>Valor</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for reserva in reservas %}
+                            {% if reserva.pago %}
+                                <tr class="table-success">
+                                    {% else %}
+                                <tr class="table-danger">
+                            {% endif %}
+                        <td>
+                            {% for hospede in reserva.hospede.all %}
+                                {{ hospede }}
+                                <br>
+                            {% endfor %}
+                        </td>
+                        <td>{{ reserva.data_de }}</td>
+                        <td>{{ reserva.data_ate }}</td>
                         {% if reserva.pago %}
-                            <tr class="table-success">
-                                {% else %}
-                            <tr class="table-danger">
+                            <td>Sim</td>
+                        {% else %}
+                            <td>Não</td>
                         {% endif %}
-                    <td>
-                        {% for hospede in reserva.hospede.all %}
-                            {{ hospede }}
-                            <br>
+                        <td>{{ reserva.qtd_pessoas_adulto }}</td>
+                        <td>{{ reserva.qtd_pessoas_crianca }}</td>
+                        <td>R$ {{ reserva.valor }}</td>
+                        </tr>
                         {% endfor %}
-                    </td>
-                    <td>{{ reserva.data_de }}</td>
-                    <td>{{ reserva.data_ate }}</td>
-                    {% if reserva.pago %}
-                        <td>Sim</td>
-                    {% else %}
-                        <td>Não</td>
-                    {% endif %}
-                    <td>{{ reserva.qtd_pessoas_adulto }}</td>
-                    <td>{{ reserva.qtd_pessoas_crianca }}</td>
-                    <td>R$ {{ reserva.valor }}</td>
-                    </tr>
-                    {% endfor %}
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+
+                </div>
+
             </div>
 
         </div>
