@@ -40,6 +40,7 @@ AUTH_USER_MODEL = 'base.User'
 INSTALLED_APPS = [
     'ubatuba.base',
     'ubatuba.reserva',
+    'ubatuba.hospede',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

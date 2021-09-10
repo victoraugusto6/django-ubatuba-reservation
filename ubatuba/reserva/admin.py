@@ -1,14 +1,6 @@
 from django.contrib import admin
 
-from ubatuba.reserva.models import Hospede, Reserva
-
-
-@admin.register(Hospede)
-class HospedeAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'cpf')
-    ordering = ('nome',)
-    search_fields = ('nome', 'cpf',)
-    list_filter = ('nome', 'cpf',)
+from ubatuba.reserva.models import Reserva
 
 
 @admin.register(Reserva)

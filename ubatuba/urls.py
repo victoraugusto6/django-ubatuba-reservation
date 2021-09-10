@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('ubatuba.base.urls')),
     path('reserva/', include('ubatuba.reserva.urls')),
+    path('hospede/', include('ubatuba.hospede.urls')),
 ]
 
 if settings.DEBUG:
