@@ -22,9 +22,9 @@ def test_contains_dropdown(resp):
     assert_contains(resp, '<li class="nav-item dropdown">')
 
 
-def test_contains_button_photos(resp):
-    assert_contains(resp, 'type="button">Fotos')
+def test_contains_button_reservation(resp):
+    assert_contains(resp, 'Ver reservas</a>')
 
 
-def test_contains_button_map(resp):
-    assert_contains(resp, 'type="button">Mapa')
+def test_contains_button_add(resp):
+    assert_contains(resp, 'Cadastrar reserva</a>')
