@@ -13,6 +13,18 @@ def hospedes(db):
 
 
 @pytest.fixture
+def hospede(db):
+    hospede = Hospede.objects.create(
+        nome='Victor',
+        cpf='397.738.908-48',
+        data_nascimento='1995-12-19',
+        telefone='(12) 99207-1544',
+        endereco='Rua 1'
+    )
+    return hospede
+
+
+@pytest.fixture
 def resp(client, hospedes):
     resp = client.get(reverse('hospede:hospede'))
     return resp
@@ -21,3 +33,7 @@ def resp(client, hospedes):
 def test_hospede_in_page(resp, hospedes):
     for hospede in hospedes:
         assert_contains(resp, hospede.nome)
+
+
+def test_hospede_normalize_fields(db, hospede):
+    assert Hospede.objects.exists()
