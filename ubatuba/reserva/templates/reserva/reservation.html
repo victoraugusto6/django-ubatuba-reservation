@@ -32,10 +32,12 @@
                         <tbody>
 
                         {% for reserva in reservas %}
-                            {% if reserva.pago %}
+                            {% if reserva.pago == 'true' %}
                                 <tr class="table-success">
-                                    {% else %}
+                                    {% elif reserva.pago == 'false' %}
                                 <tr class="table-danger">
+                                    {% else %}
+                                <tr class="table-warning">
                             {% endif %}
                         <td>
                             {% for hospede in reserva.hospede.all %}

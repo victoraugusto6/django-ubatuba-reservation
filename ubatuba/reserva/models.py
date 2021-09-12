@@ -14,8 +14,8 @@ class Reserva(models.Model):
     hospede = models.ManyToManyField(Hospede)
     data_de = models.DateField(verbose_name='Data - Entrada')
     data_ate = models.DateField(verbose_name='Data - Saída')
-    qtd_pessoas_adulto = models.IntegerField(verbose_name='Qtd. Adultos')
-    qtd_pessoas_crianca = models.IntegerField(verbose_name='Qtd. Crianças')
+    qtd_pessoas_adulto = models.PositiveIntegerField(verbose_name='Qtd. Adultos')
+    qtd_pessoas_crianca = models.PositiveIntegerField(verbose_name='Qtd. Crianças')
     pago = models.CharField(max_length=10, choices=STATUS_PAY)
     valor = models.FloatField()
 
