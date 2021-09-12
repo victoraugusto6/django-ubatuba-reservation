@@ -3,6 +3,6 @@ from ubatuba.hospede import views
 
 app_name = 'hospede'
 urlpatterns = [
-    path('', views.hospede, name='hospede'),
-    path('hospedes', views.create_hospedes, name='hospedes'),
+    path('', views.hospedes, name='hospedes'),
+    path('hospedes', views.create_hospedes, name='create_hospedes'),
 ]

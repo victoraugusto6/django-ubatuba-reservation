@@ -26,7 +26,7 @@ def hospede(db):
 
 @pytest.fixture
 def resp(client, hospedes):
-    resp = client.get(reverse('hospede:hospede'))
+    resp = client.get(reverse('hospede:hospedes'))
     return resp
 
 
