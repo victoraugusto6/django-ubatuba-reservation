@@ -31,3 +31,18 @@ def create_hospedes(request):
     }
 
     return render(request, 'hospede/hospede-form.html', context)
+
+
+def update_hospedes(request, pk):
+    hospede = Hospede.objects.get(pk=pk)
+    form = HospedeForm(instance=hospede)
+
+    if request.method == 'POST':
+        form = HospedeForm(request.POST, instance=hospede)
+
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('hospede:hospedes'))
+
+    context = {'form': form}
+    return render(request, 'hospede/hospede-form.html', context)
