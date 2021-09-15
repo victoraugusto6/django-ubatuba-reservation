@@ -14,7 +14,7 @@ backcall==0.2.0
     # via
     #   -r requirements.txt
     #   ipython
-boto3==1.18.40
+boto3==1.18.42
     # via
     #   -r requirements.txt
     #   django-s3-folder-storage
