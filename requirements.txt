@@ -18,7 +18,7 @@ certifi==2021.5.30
     # via sentry-sdk
 collectfast==2.2.0
     # via -r requirements.in
-decorator==5.0.9
+decorator==5.1.0
     # via ipython
 dj-database-url==0.5.0
     # via -r requirements.in
