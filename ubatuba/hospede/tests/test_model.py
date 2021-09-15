@@ -16,9 +16,9 @@ def hospedes(db):
 def hospede(db):
     hospede = Hospede.objects.create(
         nome='Victor',
-        cpf='397.738.908-48',
+        cpf='654.514.780-31',
         data_nascimento='1995-12-19',
-        telefone='(12) 99207-1544',
+        telefone='(11) 12345-1234',
         endereco='Rua 1'
     )
     return hospede

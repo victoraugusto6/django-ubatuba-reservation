@@ -5,7 +5,7 @@ from ubatuba.hospede.models import Hospede
 
 @admin.register(Hospede)
 class HospedeAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'cpf')
+    list_display = ('nome', 'cpf', 'avaliacao', 'criado_em', 'atualizado_em')
     ordering = ('nome',)
     search_fields = ('nome', 'cpf',)
-    list_filter = ('nome', 'cpf',)
+    list_filter = ('avaliacao',)

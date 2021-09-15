@@ -9,22 +9,13 @@
         <div class="row">
             <div class="col-md-12">
 
-
-                {#                <form action="" method="post">#}
-                {#                    {% csrf_token %}#}
-                {#                    <table>#}
-                {#                        {{ form.as_table }}#}
-                {#                    </table>#}
-                {##}
-                {#                </form>#}
-
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-4">
 
-                            <h2 class="card-title mt-3">Cadastrar Hóspedes</h2>
+                            <h2 class="card-title mt-3">Atualizar Hóspede</h2>
                             <p>
-                                Aqui você poderá cadastrar novos hóspedes.
+                                Atualize dados de {{ form.nome.value }}.
                             </p>
 
                             <form action="" method="post">
@@ -45,9 +36,8 @@
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control mask-cpf"
                                            required="required"
-                                           aria-label="Descreva o CPF do hóspede" name="cpf"
-                                           value="{{ form.cpf.value|default_if_none:"" }}"
-                                           minlength=14>
+                                           aria-label="Descreva o CPF do hóspede" name="cpf" minlength="11"
+                                           value="{{ form.cpf.value|default_if_none:"" }}">
                                 </div>
 
                                 <div>
@@ -66,9 +56,8 @@
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control mask-telefone"
                                            required="required"
-                                           aria-label="Descreva o telefone do hóspede" name="telefone"
-                                           value="{{ form.telefone.value|default_if_none:"" }}"
-                                           minlength="15">
+                                           aria-label="Descreva o telefone do hóspede" name="telefone" minlength="11"
+                                           value="{{ form.telefone.value|default_if_none:"" }}">
                                 </div>
 
                                 <div>
@@ -111,7 +100,7 @@
                                 </div>
 
                                 <div class="mt-3">
-                                    <input class="btn-success btn" type="submit" value="Cadastrar">
+                                    <input class="btn-warning btn" type="submit" value="Atualizar">
                                 </div>
                             </form>
 
