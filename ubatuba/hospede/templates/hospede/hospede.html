@@ -22,6 +22,8 @@
                             <th>Hóspede</th>
                             <th>CPF</th>
                             <th>Data de nascimento</th>
+                            <th>Avaliação</th>
+                            <th>Observação</th>
                             <th>Ações</th>
                         </tr>
                         </thead>
@@ -38,11 +40,28 @@
                                 <td>
                                     {{ hospede.data_nascimento }}
                                 </td>
+                                <td>
+                                    {% if hospede.avaliacao == 0 %}
+                                        Ótimo
+                                    {% elif hospede.avaliacao == 1 %}
+                                        Bom
+                                    {% elif hospede.avaliacao == 2 %}
+                                        Regular
+                                    {% elif hospede.avaliacao == 3 %}
+                                        Ruim
+                                    {% elif hospede.avaliacao == 4 %}
+                                        Péssimo
+                                    {% endif %}
+                                </td>
+
+                                <td>
+                                    {{ hospede.observacao }}
+                                </td>
 
                                 <td>
                                     <div class="m-2">
                                         <a class="btn btn-warning"
-                                           href="{% url 'hospede:update_hospedes' hospede.pk %}">
+                                           href="{% url 'hospede:update_hospede' hospede.pk %}">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                  fill="currentColor"
                                                  class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -54,7 +73,8 @@
                                     </div>
 
                                     <div class="m-2">
-                                        <a class="btn btn-danger" href="#">
+                                        <a class="btn btn-danger"
+                                           href="{% url 'hospede:delete_hospede' hospede.pk %}">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                  fill="currentColor"
                                                  class="bi bi-trash" viewBox="0 0 16 16">

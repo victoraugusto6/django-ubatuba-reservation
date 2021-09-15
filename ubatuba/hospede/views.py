@@ -9,9 +9,7 @@ from ubatuba.hospede.models import Hospede
 
 def hospedes(request):
     hospedes = Hospede.objects.all().order_by('nome')
-    context = {
-        'hospedes': hospedes
-    }
+    context = {'hospedes': hospedes}
     return render(request, 'hospede/hospede.html', context)
 
 
@@ -25,15 +23,12 @@ def create_hospedes(request):
             return HttpResponseRedirect(reverse('hospede:hospedes'))
     else:
         form = HospedeForm()
-
-    context = {
-        'form': form,
-    }
-
+    context = {'form': form}
     return render(request, 'hospede/hospede-form.html', context)
 
 
-def update_hospedes(request, pk):
+@login_required
+def update_hospede(request, pk):
     hospede = Hospede.objects.get(pk=pk)
     form = HospedeForm(instance=hospede)
 
@@ -45,4 +40,14 @@ def update_hospedes(request, pk):
             return HttpResponseRedirect(reverse('hospede:hospedes'))
 
     context = {'form': form}
-    return render(request, 'hospede/hospede-form.html', context)
+    return render(request, 'hospede/hospede-form-update.html', context)
+
+
+@login_required
+def delete_hospede(request, pk):
+    hospede = Hospede.objects.get(pk=pk)
+    if request.method == 'POST':
+        hospede.delete()
+        return HttpResponseRedirect(reverse('hospede:hospedes'))
+    context = {'hospede': hospede}
+    return render(request, 'hospede/hospede-form-delete.html', context)
