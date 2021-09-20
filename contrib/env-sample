@@ -14,3 +14,6 @@ DATABASE_URL=postgres://postgres:postgres@localhost/testdb
 
 # Sentry
 SENTRY_DSN='123'
+
+# Project
+VALOR_LIMPEZA=90.0

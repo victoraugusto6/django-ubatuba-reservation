@@ -1,3 +1,5 @@
+import re
+
 from django.forms import ModelForm
 
 from ubatuba.hospede.models import Hospede
@@ -23,3 +25,9 @@ class HospedeForm(ModelForm):
         self.fields['data_nascimento'].widget.attrs.update({'class': 'mask-data-nascimento'})
         self.fields['observacao'].widget.attrs['rows'] = 3
         self.fields['observacao'].widget.attrs['columns'] = 3
+
+    def clean_telefone(self):
+        telefone = self.cleaned_data.get('telefone')
+        if telefone:
+            telefone = re.sub(r'\D+', '', telefone)
+        return telefone

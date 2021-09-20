@@ -1,3 +1,6 @@
+from decimal import Decimal
+
+from decouple import config
 from django.core.exceptions import ValidationError
 from django.db import models
 
@@ -9,23 +12,36 @@ STATUS_PAY = (
     ('partial', 'Parcial'),
 )
 
+YES_OR_NO = (
+    (True, 'Sim'),
+    (False, 'Não'),
+)
+
 
 class Reserva(models.Model):
-    hospede = models.ManyToManyField(Hospede)
-    data_de = models.DateField(verbose_name='Data - Entrada')
-    data_ate = models.DateField(verbose_name='Data - Saída')
+    hospede = models.ForeignKey(Hospede, on_delete=models.PROTECT, verbose_name='Hóspede')
+    data_entrada = models.DateField(verbose_name='Data - Entrada')
+    data_saida = models.DateField(verbose_name='Data - Saída')
     qtd_pessoas_adulto = models.PositiveIntegerField(verbose_name='Qtd. Adultos')
     qtd_pessoas_crianca = models.PositiveIntegerField(verbose_name='Qtd. Crianças')
     pago = models.CharField(max_length=10, choices=STATUS_PAY)
-    valor = models.FloatField()
+    valor_pago_total = models.DecimalField(decimal_places=2, max_digits=6, verbose_name='Valor total')
+    valor_pago_parcial = models.DecimalField(decimal_places=2, max_digits=6, default=0, verbose_name='Valor adiantado')
+    pagara_limpeza = models.BooleanField(choices=YES_OR_NO, default=True, verbose_name='Pagará limpeza?')
+    payed_limpeza = models.BooleanField(default=False, editable=False)
+    observacao = models.TextField(verbose_name='Observações', blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def save(self, *args, **kwargs):
-        if self.data_de > self.data_ate:
+        if self.data_entrada > self.data_saida:
             raise ValidationError('Data de saída é menor que data de entrada.')
         elif self.qtd_pessoas_adulto + self.qtd_pessoas_crianca > 7:
             raise ValidationError('Número de pessoas maior do que permitido (7 pessoas).')
-        else:
-            super().save(*args, **kwargs)
+        elif self.pagara_limpeza and self.payed_limpeza is False:
+            self.valor_pago_total += Decimal(config('VALOR_LIMPEZA'))
+            self.payed_limpeza = True
+        super().save(*args, **kwargs)
 
     def __str__(self):
-        return str(self.data_de)
+        return str(self.data_entrada)
