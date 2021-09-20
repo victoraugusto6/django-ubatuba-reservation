@@ -40,7 +40,8 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{% url 'reserva:reservation' %}">Ver reservas</a></li>
-                        <li><a class="dropdown-item" href="#">Cadastrar reserva</a></li>
+                        <li><a class="dropdown-item" href="{% url 'reserva:create_reserva' %}">Cadastrar reserva</a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -50,7 +51,8 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{% url 'hospede:hospedes' %}">Ver hóspedes</a></li>
-                        <li><a class="dropdown-item" href="{% url 'hospede:create_hospedes' %}">Cadastrar hóspede</a></li>
+                        <li><a class="dropdown-item" href="{% url 'hospede:create_hospedes' %}">Cadastrar hóspede</a>
+                        </li>
                     </ul>
                 </li>
             </ul>
