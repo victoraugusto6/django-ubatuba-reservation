@@ -23,7 +23,7 @@
 
                 <form method="post" action="{% url 'login' %}">
                     {% csrf_token %}
-                    <table>
+                    <table class="mt-5">
                         <tr>
                             <td> {{ form.username.label_tag }}</td>
                             <td>{{ form.username }}</td>
