@@ -1,3 +1,7 @@
 div .responsive-table {
     overflow-x: auto;
 }
+
+.emoji_avaliacao {
+    font-size: 40px;
+}
