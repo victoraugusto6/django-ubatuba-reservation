@@ -30,5 +30,13 @@ def test_contains_button_reservation(resp):
     assert_contains(resp, 'Ver reservas</a>')
 
 
-def test_contains_button_add(resp):
+def test_contains_button_add_reserva(resp):
     assert_contains(resp, 'Cadastrar reserva</a>')
+
+
+def test_contains_button_hospede(resp):
+    assert_contains(resp, 'Ver hóspedes</a>')
+
+
+def test_contains_button_add_hospede(resp):
+    assert_contains(resp, 'Cadastrar hóspede</a>')
