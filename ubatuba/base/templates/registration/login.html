@@ -1,0 +1,48 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Ubatuba - Login{% endblock title %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+
+                {% if form.errors %}
+                    <p>Seu nome de usuário e senha não coincidem. Por favor, tente novamente.</p>
+                {% endif %}
+
+                {% if next %}
+                    {% if user.is_authenticated %}
+                        <p>Sua conta não tem acesso a esta página. Para continuar, faça login com uma conta que tenha
+                            acesso.</p>
+                    {% else %}
+                        <p>Faça login para ver esta página.</p>
+                    {% endif %}
+                {% endif %}
+
+                <form method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <td> {{ form.username.label_tag }}</td>
+                            <td>{{ form.username }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ form.password.label_tag }}</td>
+                            <td>{{ form.password }}</td>
+                        </tr>
+                    </table>
+
+                    <input class="btn btn-primary" type="submit" value="login">
+                    <input type="hidden" name="next" value="{{ next }}">
+
+                </form>
+
+                {# Assumes you setup the password_reset view in your URLconf #}
+                <p><a href="{% url 'password_reset' %}">Esqueceu sua senha?</a></p>
+
+            </div>
+        </div>
+    </div>
+{% endblock body %}
