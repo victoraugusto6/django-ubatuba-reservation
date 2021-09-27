@@ -39,6 +39,13 @@ def test_hospede_exists_bd(resp_create_hospede):
     assert Hospede.objects.exists()
 
 
+def test_hospede_normalize_fields(resp_create_hospede):
+    assert Hospede.objects.get(
+        cpf='65451478031',
+        telefone='11123451234'
+    )
+
+
 @pytest.fixture
 def hospede(db):
     return Hospede.objects.create(
