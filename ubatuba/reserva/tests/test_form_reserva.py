@@ -20,8 +20,8 @@ def hospede(db):
 def reserva(db, hospede):
     return Reserva.objects.create(
         hospede=hospede,
-        data_entrada='2021-10-1',
-        data_saida='2021-10-2',
+        data_entrada='2021-09-28 12:40:00',
+        data_saida='2021-09-28 12:41:00',
         qtd_pessoas_adulto=1,
         qtd_pessoas_crianca=1,
         pago='true',
@@ -37,8 +37,8 @@ def resp_create_reserva(client, db, admin_user, hospede):
     client.force_login(admin_user)
     resp_create = client.post(reverse('reserva:create_reserva'), data={
         'hospede': hospede.pk,
-        'data_entrada': '2021-10-1',
-        'data_saida': '2021-10-2',
+        'data_entrada': '2021-09-28 12:40:00',
+        'data_saida': '2021-09-29 12:40:00',
         'qtd_pessoas_adulto': 1,
         'qtd_pessoas_crianca': 1,
         'pago': 'true',
@@ -59,8 +59,8 @@ def resp_update_reserva(client, db, admin_user, hospede, reserva):
     client.force_login(admin_user)
     resp_update = client.post(reverse('reserva:update_reserva', kwargs={'pk': reserva.pk}), data={
         'hospede': hospede.pk,
-        'data_entrada': '2021-10-1',
-        'data_saida': '2021-10-2',
+        'data_entrada': '2021-09-28 12:40:00',
+        'data_saida': '2021-09-29 12:40:00',
         'qtd_pessoas_adulto': 3,
         'qtd_pessoas_crianca': 3,
         'pago': 'true',

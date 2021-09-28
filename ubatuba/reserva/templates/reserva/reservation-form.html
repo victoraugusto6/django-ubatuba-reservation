@@ -36,7 +36,7 @@
                                     <label>Data - Entrada</label>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input type="date" class="form-control"
+                                    <input type="datetime-local" class="form-control"
                                            required="required"
                                            aria-label="Descreva a data de entrada" name="data_entrada"
                                            value="{{ form.data_entrada.value|default_if_none:""|date:"Y-m-d" }}">
@@ -46,7 +46,7 @@
                                     <label>Data - Saída</label>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input type="date" class="form-control"
+                                    <input type="datetime-local" class="form-control"
                                            required="required"
                                            aria-label="Descreva a data de saída" name="data_saida"
                                            value="{{ form.data_saida.value|default_if_none:""|date:"Y-m-d" }}">
