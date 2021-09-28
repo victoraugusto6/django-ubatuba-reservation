@@ -7,6 +7,7 @@ from ubatuba.reserva.forms import ReservaForm
 from ubatuba.reserva.models import Reserva
 
 
+@login_required
 def reservation(request):
     reservas = Reserva.objects.all().order_by('data_entrada')
     context = {

@@ -7,6 +7,7 @@ from ubatuba.hospede.forms import HospedeForm
 from ubatuba.hospede.models import Hospede
 
 
+@login_required
 def hospedes(request):
     hospedes = Hospede.objects.all().order_by('nome')
     context = {'hospedes': hospedes}

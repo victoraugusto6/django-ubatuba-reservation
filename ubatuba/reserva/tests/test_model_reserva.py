@@ -30,7 +30,8 @@ def hospede(db):
 
 
 @pytest.fixture
-def resp(client, reservas):
+def resp(client, admin_user, reservas):
+    client.force_login(admin_user)
     resp = client.get(reverse('reserva:reservation'))
     return resp
 
