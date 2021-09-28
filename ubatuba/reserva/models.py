@@ -27,7 +27,7 @@ class Reserva(models.Model):
     pago = models.CharField(max_length=10, choices=STATUS_PAY)
     valor_pago_total = models.DecimalField(decimal_places=2, max_digits=6, verbose_name='Valor total')
     valor_pago_parcial = models.DecimalField(decimal_places=2, max_digits=6, default=0, verbose_name='Valor adiantado')
-    pagara_limpeza = models.BooleanField(choices=YES_OR_NO, default=True, verbose_name='Pagará limpeza?')
+    pagara_limpeza = models.BooleanField(choices=YES_OR_NO, default=True, verbose_name='Incluir limpeza?')
     payed_limpeza = models.BooleanField(default=False, editable=False)
     observacao = models.TextField(verbose_name='Observações', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -41,6 +41,9 @@ class Reserva(models.Model):
         elif self.pagara_limpeza and self.payed_limpeza is False:
             self.valor_pago_total += Decimal(config('VALOR_LIMPEZA'))
             self.payed_limpeza = True
+        elif self.pagara_limpeza is False and self.payed_limpeza:
+            self.payed_limpeza = False
+            self.valor_pago_total -= Decimal(config('VALOR_LIMPEZA'))
         super().save(*args, **kwargs)
 
     def __str__(self):
