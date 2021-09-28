@@ -20,8 +20,8 @@ YES_OR_NO = (
 
 class Reserva(models.Model):
     hospede = models.ForeignKey(Hospede, on_delete=models.PROTECT, verbose_name='Hóspede')
-    data_entrada = models.DateField(verbose_name='Data - Entrada')
-    data_saida = models.DateField(verbose_name='Data - Saída')
+    data_entrada = models.DateTimeField(verbose_name='Data - Entrada')
+    data_saida = models.DateTimeField(verbose_name='Data - Saída')
     qtd_pessoas_adulto = models.PositiveIntegerField(verbose_name='Qtd. Adultos')
     qtd_pessoas_crianca = models.PositiveIntegerField(verbose_name='Qtd. Crianças')
     pago = models.CharField(max_length=10, choices=STATUS_PAY)

@@ -49,8 +49,8 @@ def test_reserva_normalize_fields(db, reserva):
 def reserva_test_limpeza_pago(db, hospede):
     return Reserva.objects.create(
         hospede=hospede,
-        data_entrada='2021-10-1',
-        data_saida='2021-10-2',
+        data_entrada='2021-09-28 12:40:00',
+        data_saida='2021-09-28 12:41:00',
         qtd_pessoas_adulto=3,
         qtd_pessoas_crianca=3,
         pago=True,
@@ -75,7 +75,7 @@ def test_valor_limpeza_removido(reserva_test_limpeza_pago):
     assert Reserva.objects.get(
         valor_pago_total=190
     )
-    reserva = Reserva.objects.get(data_entrada='2021-10-1')
+    reserva = Reserva.objects.get(data_entrada='2021-09-28 12:40:00')
     reserva.pagara_limpeza = False
     reserva.save()
     assert reserva.valor_pago_total == 100
