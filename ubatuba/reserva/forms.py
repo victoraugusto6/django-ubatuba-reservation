@@ -22,8 +22,7 @@ class ReservaForm(ModelForm):
         data_saida = self.cleaned_data.get('data_saida')
 
         if qtd_pessoas_adulto + qtd_pessoas_crianca > 7:
-            self._errors['Quantidade de pessoas'] = self.error_class([
-                'Número de pessoas maior do que permitido (7 pessoas).'])
-        elif data_entrada > data_saida:
-            self._errors['Data de entrada'] = self.error_class([
-                'Data de saída é menor que data de entrada.'])
+            self.add_error('__all__', 'Número de pessoas maior do que permitido (7 pessoas).')
+
+        if data_entrada > data_saida:
+            self.add_error('__all__', 'Data de saída é menor que data de entrada.')
