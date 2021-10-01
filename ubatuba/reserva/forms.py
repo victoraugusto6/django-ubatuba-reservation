@@ -10,6 +10,7 @@ class ReservaForm(ModelForm):
             'created_at',
             'updated_at'
         ]
+        localized_fields = ['valor_pago_total', 'valor_pago_parcial']
 
     def clean(self):
         super(ReservaForm, self).clean()

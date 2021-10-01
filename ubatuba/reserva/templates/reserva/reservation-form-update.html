@@ -39,7 +39,7 @@
                                     <input type="datetime-local" class="form-control"
                                            required="required"
                                            aria-label="Descreva a data de entrada" name="data_entrada"
-                                           value="{{ form.data_entrada.value|default_if_none:""|date:"Y-m-d" }}">
+                                           value="{{ form.data_entrada.value|default_if_none:""|date:"c" }}">
                                 </div>
 
                                 <div>
@@ -49,7 +49,7 @@
                                     <input type="datetime-local" class="form-control"
                                            required="required"
                                            aria-label="Descreva a data de saída" name="data_saida"
-                                           value="{{ form.data_saida.value|default_if_none:""|date:"Y-m-d" }}">
+                                           value="{{ form.data_saida.value|default_if_none:""|date:"c" }}">
                                 </div>
 
                                 <div>
@@ -95,7 +95,7 @@
                                     <label>Valor da reserva</label>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input type="number" class="form-control"
+                                    <input type="text" class="form-control"
                                            required="required"
                                            aria-label="Descreva o valor da reserva" name="valor_pago_total"
                                            value="{{ form.valor_pago_total.value|default_if_none:""|floatformat:-2 }}">
@@ -106,7 +106,7 @@
                                         <label>Valor adiantado pago</label>
                                     </div>
                                     <div class="input-group mb-3">
-                                        <input type="number" class="form-control"
+                                        <input type="text" class="form-control"
                                                aria-label="Descreva adiantado pago da reserva"
                                                name="valor_pago_parcial"
                                                id="valor_pago_parcial"
