@@ -2,6 +2,7 @@ import pytest
 from django.urls import reverse
 
 from ubatuba.hospede.models import Hospede
+from ubatuba.reserva.forms import ReservaForm
 from ubatuba.reserva.models import Reserva
 
 
@@ -88,3 +89,39 @@ def resp_delete_reserva(client, db, admin_user, reserva):
 
 def test_delete_hospede(resp_delete_reserva):
     assert not Reserva.objects.exists()
+
+
+def test_quantidade_invalido_reserva(db, hospede):
+    form = ReservaForm(data={
+        'hospede': hospede.pk,
+        'data_entrada': '2021-09-28 12:40:00',
+        'data_saida': '2021-09-29 12:40:00',
+        'qtd_pessoas_adulto': 7,
+        'qtd_pessoas_crianca': 1,
+        'pago': 'true',
+        'valor_pago_total': 100,
+        'valor_pago_parcial': 0,
+        'pagara_limpeza': True,
+        'observacao': ''
+    })
+
+    assert not form.is_valid()
+    assert form.errors['__all__'] == ['Número de pessoas maior do que permitido (7 pessoas).']
+
+
+def test_dates_invalido_reserva(db, hospede):
+    form = ReservaForm(data={
+        'hospede': hospede.pk,
+        'data_entrada': '2021-09-30 12:40:00',
+        'data_saida': '2021-09-29 12:40:00',
+        'qtd_pessoas_adulto': 1,
+        'qtd_pessoas_crianca': 1,
+        'pago': 'true',
+        'valor_pago_total': 100,
+        'valor_pago_parcial': 0,
+        'pagara_limpeza': True,
+        'observacao': ''
+    })
+
+    assert not form.is_valid()
+    assert form.errors['__all__'] == ['Data de saída é menor que data de entrada.']
