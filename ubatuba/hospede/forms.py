@@ -23,7 +23,6 @@ class HospedeForm(ModelForm):
         self.fields['cpf'].max_length = 14
         self.fields['telefone'].max_length = 15
 
-
     def clean_telefone(self):
         telefone = self.cleaned_data.get('telefone')
         if telefone:
