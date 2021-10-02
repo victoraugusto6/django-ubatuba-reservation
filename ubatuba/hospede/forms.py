@@ -18,6 +18,12 @@ class HospedeForm(ModelForm):
             'observacao'
         ]
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['cpf'].max_length = 14
+        self.fields['telefone'].max_length = 15
+
+
     def clean_telefone(self):
         telefone = self.cleaned_data.get('telefone')
         if telefone:
