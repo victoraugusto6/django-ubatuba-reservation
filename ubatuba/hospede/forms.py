@@ -18,16 +18,14 @@ class HospedeForm(ModelForm):
             'observacao'
         ]
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['cpf'].widget.attrs.update({'class': 'mask-cpf'})
-        self.fields['telefone'].widget.attrs.update({'class': 'mask-telefone'})
-        self.fields['data_nascimento'].widget.attrs.update({'class': 'mask-data-nascimento'})
-        self.fields['observacao'].widget.attrs['rows'] = 3
-        self.fields['observacao'].widget.attrs['columns'] = 3
-
     def clean_telefone(self):
         telefone = self.cleaned_data.get('telefone')
         if telefone:
             telefone = re.sub(r'\D+', '', telefone)
         return telefone
+
+    def clean_cpf(self):
+        cpf = self.cleaned_data.get('cpf')
+        if cpf:
+            cpf = re.sub(r'\D+', '', cpf)
+        return cpf
