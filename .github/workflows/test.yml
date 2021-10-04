@@ -40,6 +40,6 @@ jobs:
           pytest --cov=ubatuba
       - name: Relatório Coverage
         env:
-          CODECOV_TOKEN: "f4cd8ec8-2572-4f64-8b30-7d47a57be08d"
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: |
           codecov
