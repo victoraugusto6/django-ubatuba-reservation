@@ -40,16 +40,6 @@
                                 </div>
 
                                 <div>
-                                    <label>Data de nascimento</label>
-                                </div>
-                                <div class="input-group mb-3">
-                                    <input type="date" class="form-control"
-                                           required="required"
-                                           aria-label="Descreva a data de nascimento do hóspede" name="data_nascimento"
-                                           value="{{ form.data_nascimento.value|default_if_none:""|date:"Y-m-d" }}">
-                                </div>
-
-                                <div>
                                     <label>Telefone</label>
                                 </div>
                                 <div class="input-group mb-3">
@@ -57,16 +47,6 @@
                                            required="required"
                                            aria-label="Descreva o telefone do hóspede" name="telefone" minlength="11"
                                            value="{{ form.telefone.value|default_if_none:"" }}">
-                                </div>
-
-                                <div>
-                                    <label>Endereço</label>
-                                </div>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control"
-                                           required="required"
-                                           aria-label="Descreva o endereço do hóspede" name="endereco"
-                                           value="{{ form.endereco.value|default_if_none:"" }}">
                                 </div>
 
                                 <div>

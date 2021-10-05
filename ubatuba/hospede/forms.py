@@ -8,14 +8,9 @@ from ubatuba.hospede.models import Hospede
 class HospedeForm(ModelForm):
     class Meta:
         model = Hospede
-        fields = [
-            'nome',
-            'cpf',
-            'data_nascimento',
-            'telefone',
-            'endereco',
-            'avaliacao',
-            'observacao'
+        exclude = [
+            'created_at',
+            'updated_at'
         ]
 
     def __init__(self, *args, **kwargs):
