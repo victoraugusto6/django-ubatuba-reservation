@@ -5,7 +5,8 @@ from ubatuba.hospede.forms import HospedeForm
 
 @pytest.mark.parametrize(
     'nome, cpf, data_nascimento, telefone,endereco, avaliacao, observacao',
-    [('Victor', '654.514.780-31', '1995-12-19', '(11) 12345-1234', 'Rua 1', '', '')])
+    [('Victor', '654.514.780-31', '1995-12-19', '(11) 12345-1234', 'Rua 1', '', ''),
+     ('Pedro', '', '1995-12-19', '(11) 12345-9877', 'Rua 2', '', '')])
 def test_form_success(db, nome, cpf, data_nascimento, telefone, endereco, avaliacao, observacao):
     form = HospedeForm(data={
         'nome': nome,

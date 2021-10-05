@@ -34,9 +34,15 @@
                                 <td>
                                     {{ hospede.nome }}
                                 </td>
-                                <td class="mask-cpf">
-                                    {{ hospede.cpf }}
-                                </td>
+                                {% if hospede.cpf %}
+                                    <td class="mask-cpf">
+                                        {{ hospede.cpf }}
+                                    </td>
+                                {% else %}
+                                    <td>
+                                        Não informado
+                                    </td>
+                                {% endif %}
                                 <td>
                                     {{ hospede.data_nascimento }}
                                 </td>
