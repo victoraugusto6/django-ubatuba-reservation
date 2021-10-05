@@ -1,6 +1,6 @@
 import pytest
 from django.urls import reverse
-from model_mommy import mommy
+from model_bakery import baker
 
 from django_assertions import assert_contains
 from ubatuba.hospede.models import Hospede
@@ -9,13 +9,13 @@ from ubatuba.reserva.models import Reserva
 
 @pytest.fixture
 def reservas(db):
-    reservas = mommy.make(Reserva, 2, qtd_pessoas_adulto=6, qtd_pessoas_crianca=1)
+    reservas = baker.make('Reserva', 2, qtd_pessoas_adulto=6, qtd_pessoas_crianca=1)
     return reservas
 
 
 @pytest.fixture
 def reserva(db):
-    return mommy.make(Reserva, 1, qtd_pessoas_adulto=5, qtd_pessoas_crianca=1)
+    return baker.make('Reserva', 1, qtd_pessoas_adulto=5, qtd_pessoas_crianca=1)
 
 
 @pytest.fixture
