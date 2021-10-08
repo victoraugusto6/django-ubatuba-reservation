@@ -9,7 +9,14 @@ from ubatuba.reserva.models import Reserva
 
 @pytest.fixture
 def reservas(db):
-    reservas = baker.make('Reserva', 2, qtd_pessoas_adulto=6, qtd_pessoas_crianca=1)
+    reservas = baker.make(
+        'Reserva',
+        2,
+        qtd_pessoas_adulto=6,
+        qtd_pessoas_crianca=1,
+        data_entrada='2021-09-28 12:40:00',
+        data_saida='2021-09-29 12:40:00',
+    )
     return reservas
 
 

@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.db.models import ProtectedError
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -48,7 +49,14 @@ def update_hospede(request, pk):
 def delete_hospede(request, pk):
     hospede = Hospede.objects.get(pk=pk)
     if request.method == 'POST':
-        hospede.delete()
-        return HttpResponseRedirect(reverse('hospede:hospedes'))
+        try:
+            hospede.delete()
+            return HttpResponseRedirect(reverse('hospede:hospedes'))
+        except ProtectedError:
+            hospede = Hospede.objects.get(pk=pk)
+            hospedes = Hospede.objects.all().order_by('nome')
+            context = {'hospedes': hospedes,
+                       'error': f'Não é possível deletar: {hospede} - Contém reservas cadastradas'}
+            return render(request, 'hospede/hospede.html', context)
     context = {'hospede': hospede}
     return render(request, 'hospede/hospede-form-delete.html', context)
