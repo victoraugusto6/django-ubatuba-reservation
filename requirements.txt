@@ -12,13 +12,13 @@ backcall==0.2.0 \
     --hash=sha256:5cbdbf27be5e7cfadb448baf0aa95508f91f2bbc6c6437cd9cd06e2a4c215e1e \
     --hash=sha256:fbbce6a29f263178a1f7915c1940bde0ec2b2a967566fe1c65c1dfb7422bd255
     # via ipython
-boto3==1.18.54 \
-    --hash=sha256:2d81dc484020059fc738165984304107d4db1c6774b6310d08c892a1751f6980 \
-    --hash=sha256:f22a77098cd70ddf848df6981ec57b92178e9d8eb74637edbdf4173bfa9279fa
+boto3==1.18.57 \
+    --hash=sha256:3e6176b3ccdd039427f63365bdf25c312ec9e88cc72ba907beea006ccf32116b \
+    --hash=sha256:56a4c68a4ee131527e8bd65ab71270b06d985e6687ef27e9dfa992250fcc4c15
     # via django-s3-folder-storage
-botocore==1.21.54 \
-    --hash=sha256:46127b3a385d0ec73d1994b8958b23b79e0613e12c486371a100df992b72a1b9 \
-    --hash=sha256:56b74a5186bec835baf580b2d062ea1738d3ff5a573653d41b3ad1598a5b77c4
+botocore==1.21.57 \
+    --hash=sha256:2a00acb822b148abf6a452c10c5f0b85d245e4bde7a0465ca2a5f8c990c07fc1 \
+    --hash=sha256:4fd374e2dad91b2375db08e0c8a0bbd03b5e741b7dc4c5e730a544993cc46850
     # via
     #   boto3
     #   s3transfer
@@ -58,9 +58,9 @@ django-extensions==3.1.3 \
 django-s3-folder-storage==0.5 \
     --hash=sha256:eb5fd3994726f5b87ddc0ea1a6f1af3f598f9d743127c27d6dae111d18a79abe
     # via -r requirements.in
-django-storages==1.11.1 \
-    --hash=sha256:c823dbf56c9e35b0999a13d7e05062b837bae36c518a40255d522fbe3750fbb4 \
-    --hash=sha256:f28765826d507a0309cfaa849bd084894bc71d81bf0d09479168d44785396f80
+django-storages==1.12 \
+    --hash=sha256:b3fdb4337b1e54b8a23fe41c62d91648e26249f9fc00e882d1d09e16207aa204 \
+    --hash=sha256:b76fb6758ff6251565d07a18fe051ca1dc886921052cd5a7e373442449c72a4a
     # via
     #   collectfast
     #   django-s3-folder-storage
