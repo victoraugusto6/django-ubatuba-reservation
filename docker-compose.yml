@@ -9,7 +9,7 @@ services:
       - ./.pgdata:/var/lib/postgresql/data
     environment:
       - LC_ALL=C.UTF-8
-      - POSTGRES_PASSWORD=pythonpro
-      - POSTGRES_USER=pythonpro
+      - POSTGRES_PASSWORD=usuario
+      - POSTGRES_USER=usuario
     ports:
       - 5434:5432

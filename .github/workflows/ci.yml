@@ -11,7 +11,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres:9.5
+        image: postgres:12
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
@@ -19,12 +19,13 @@ jobs:
         ports: [ '5432:5432' ]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Setup Python
         uses: actions/setup-python@v1
         with:
           python-version: 3.9
           architecture: x64
+          cache: 'pip'
       - name: Copiar Configurações .env
         run: |
           cp contrib/env-sample .env
