@@ -4,3 +4,4 @@ pytest-django
 pytest-cov
 codecov
 model_bakery
+pip-audit
