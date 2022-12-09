@@ -29,7 +29,7 @@ botocore==1.27.82
     #   s3transfer
 cachecontrol[filecache]==0.12.11
     # via pip-audit
-certifi==2022.9.24
+certifi==2022.12.7
     # via
     #   -r requirements.txt
     #   requests
@@ -215,9 +215,7 @@ toml==0.10.2
     #   cyclonedx-python-lib
     #   pip-audit
 tomli==2.0.1
-    # via
-    #   coverage
-    #   pytest
+    # via pytest
 traitlets==5.4.0
     # via
     #   -r requirements.txt
