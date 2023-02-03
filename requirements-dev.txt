@@ -54,7 +54,7 @@ decorator==5.1.1
     #   ipython
 dj-database-url==1.0.0
     # via -r requirements.txt
-django==4.1.1
+django==4.1.6
     # via
     #   -r requirements.txt
     #   collectfast
@@ -215,9 +215,7 @@ toml==0.10.2
     #   cyclonedx-python-lib
     #   pip-audit
 tomli==2.0.1
-    # via
-    #   coverage
-    #   pytest
+    # via pytest
 traitlets==5.4.0
     # via
     #   -r requirements.txt
